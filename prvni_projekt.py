@@ -38,129 +38,118 @@ garpike and stingray are also present.'''
 ]
 
 usernames = ["bob", "ann", "mike", "liz"]
-passwords = ["123", "pass123", "password123", "pass1234"]
-user_password = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass1234"}
-upper = 0
-lower = 0
-cislo = 0
-title = 0
-soucet_cisel = 0
-graf_cislo = 0
+passwords = ["123", "pass123", "password123", "pass123"]
+user_password = zip(usernames, passwords)
+upper, lower, number, title, sum_of_numbers, graph_for_number = 0, 0, 0, 0, 0, 0
 
-
-print("username:")
-jmeno = input()
-print("password:")
-heslo = input()
+username = input("username:")
+password = input("password:")
 print("-" * 40)
-if user_password.get(jmeno) == heslo:
-    print("Welcome to the app,", jmeno)
+if dict(user_password).get(username) == password:
+    print("Welcome to the app,", username)
     print("We have 3 texts to be analyzed.")
     print("-" * 40)
-    print("Enter a number btw. 1 and 3 to select:")
-    vyber_textu = input()
-    if vyber_textu == "1":
-        print("-" * 40)
-        vyber_textu = TEXTS[0]
-        print("There are", len(vyber_textu.split()), "words in the selected text.")
-        for znak in vyber_textu.split():
-            if znak.istitle():
+    text_selection = input("Enter a number btw. 1 and 3 to select: ")
+    print("-" * 40)
+    if (text_selection) == "1":
+        text_selection = TEXTS[0]
+        print("There are", len(text_selection.split()), "words in the selected text.")
+        for words_and_number in text_selection.split():
+            if words_and_number.istitle():
                 title += 1
                 continue
-            elif znak.isupper():
+            elif words_and_number.isupper():
                 upper += 1
                 continue
-            elif znak.islower():
+            elif words_and_number.islower():
                 lower += 1
                 continue
-            elif znak.isdigit():
-                cislo += 1
+            elif words_and_number.isdigit():
+                number += 1
                 continue
 
         print("There are", title, "titlecase words.")
         print("There are", upper, "uppercase words.")
         print("There are", lower, "lowercase words.")
-        print("There are", cislo, "numeric strings.")
-        for soucet in vyber_textu.split():
-            if soucet.isdigit():
-                soucet_cisel += int(soucet)
+        print("There are", number, "numeric strings.")
+        for number_count in text_selection.split():
+            if number_count.isdigit():
+                sum_of_numbers += int(number_count)
                 continue
-        print("The sum of all the numbers", soucet_cisel)
+        print("The sum of all the numbers", sum_of_numbers)
 
-        graf = "***** *** ****** * **"
-        for hodnota in graf.split():
-            if hodnota.count("*"):
-                graf_cislo += 1
-                print(graf_cislo, hodnota, len(hodnota), sep="|")
+        graph = "***** *** ****** * **"
+        for value in graph.split():
+            if value.count("*"):
+                graph_for_number += 1
+                print(graph_for_number, value, str(len(value)).rjust(3), sep="|")
                 continue
 
-    elif vyber_textu == "2":
-        print("-" * 40)
-        vyber_textu = TEXTS[1]
-        print("There are", len(vyber_textu.split()), "words in the selected text.")
-        for znak in vyber_textu.split():
-            if znak.istitle():
+    elif text_selection == "2":
+        text_selection = TEXTS[1]
+        print("There are", len(text_selection.split()), "words in the selected text.")
+        for words_and_number in text_selection.split():
+            if words_and_number.istitle():
                 title += 1
                 continue
-            elif znak.isupper():
+            elif words_and_number.isupper():
                 upper += 1
                 continue
-            elif znak.islower():
+            elif words_and_number.islower():
                 lower += 1
                 continue
-            elif znak.isdigit():
-                cislo += 1
+            elif words_and_number.isdigit():
+                number += 1
                 continue
 
         print("There are", title, "titlecase words.")
         print("There are", upper, "uppercase words.")
         print("There are", lower, "lowercase words.")
-        print("There are", cislo, "numeric strings.")
-        for soucet in vyber_textu.split():
-            if soucet.isdigit():
-                soucet_cisel += int(soucet)
+        print("There are", number, "numeric strings.")
+        for number_count in text_selection.split():
+            if number_count.isdigit():
+                sum_of_numbers += int(number_count)
                 continue
-        print("The sum of all the numbers", soucet_cisel)
+        print("The sum of all the numbers", sum_of_numbers)
 
-        graf = "***** *** ****** * **"
-        for hodnota in graf.split():
-            if hodnota.count("*"):
-                graf_cislo += 1
-                print(graf_cislo, hodnota, len(hodnota), sep="|")
+        graph = "***** *** ****** * **"
+        for value in graph.split():
+            if value.count("*"):
+                graph_for_number += 1
+                print(graph_for_number, value, len(value), sep="|")
                 continue
-    elif vyber_textu == "3":
-        print("-" * 40)
-        vyber_textu = TEXTS[2]
-        print("There are", len(vyber_textu.split()), "words in the selected text.")
-        for znak in vyber_textu.split():
-            if znak.istitle():
+    elif text_selection == "3":
+        text_selection = TEXTS[2]
+        print("There are", len(text_selection.split()), "words in the selected text.")
+        for words_and_number in text_selection.split():
+            if words_and_number.istitle():
                 title += 1
                 continue
-            elif znak.isupper():
+            elif words_and_number.isupper():
                 upper += 1
                 continue
-            elif znak.islower():
+            elif words_and_number.islower():
                 lower += 1
                 continue
-            elif znak.isdigit():
-                cislo += 1
+            elif words_and_number.isdigit():
+                number += 1
                 continue
 
         print("There are", title, "titlecase words.")
         print("There are", upper, "uppercase words.")
         print("There are", lower, "lowercase words.")
-        print("There are", cislo, "numeric strings.")
-        for soucet in vyber_textu.split():
-            if soucet.isdigit():
-                soucet_cisel += int(soucet)
+        print("There are", number, "numeric strings.")
+        for number_count in text_selection.split():
+            if number_count.isdigit():
+                sum_of_numbers += int(number_count)
                 continue
-        print("The sum of all the numbers", soucet_cisel)
+        print("The sum of all the numbers", sum_of_numbers)
 
-        graf = "***** *** ****** * **"
-        for hodnota in graf.split():
-            if hodnota.count("*"):
-                graf_cislo += 1
-                print(graf_cislo, hodnota, len(hodnota), sep="|")
+        graph = "***** *** ****** * **"
+        for value in graph.split():
+            if value.count("*"):
+                graph_for_number += 1
+                print(graph_for_number, value, len(value), sep="|")
                 continue
     else:
         print("-" * 40)
@@ -168,5 +157,4 @@ if user_password.get(jmeno) == heslo:
 
 
 else:
-        print("unregistered user, terminating the program..")
-
+    print("unregistered user, terminating the program..")

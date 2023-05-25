@@ -49,9 +49,9 @@ if dict(user_password).get(username) == password:
     print("Welcome to the app,", username)
     print("We have 3 texts to be analyzed.")
     print("-" * 40)
-    text_selection = input("Enter a number btw. 1 and 3 to select: ")
+    text_selection = int(input("Enter a number btw. 1 and 3 to select: "))
     print("-" * 40)
-    if (text_selection) == "1":
+    if text_selection == 1:
         text_selection = TEXTS[0]
         print("There are", len(text_selection.split()), "words in the selected text.")
         for words_and_number in text_selection.split():
@@ -77,15 +77,25 @@ if dict(user_password).get(username) == password:
                 sum_of_numbers += int(number_count)
                 continue
         print("The sum of all the numbers", sum_of_numbers)
+        print("-" * 40)
 
         graph = "***** *** ****** * **"
-        for value in graph.split():
+
+        dictionary = dict()
+        max_len_value = len(max(graph.split(), key=len))
+
+        for word_length in graph.split():
+            if word_length not in dictionary:
+                dictionary[len(word_length)] = word_length
+
+        for key, value in dictionary.items():
             if value.count("*"):
                 graph_for_number += 1
-                print(graph_for_number, value, str(len(value)).rjust(3), sep="|")
-                continue
+                print(str(graph_for_number).rjust(3),
+                      "|", len(value) * "*",
+                      "|".rjust(max_len_value + 1 - len(value)), len(value))
 
-    elif text_selection == "2":
+    elif text_selection == 2:
         text_selection = TEXTS[1]
         print("There are", len(text_selection.split()), "words in the selected text.")
         for words_and_number in text_selection.split():
@@ -111,14 +121,25 @@ if dict(user_password).get(username) == password:
                 sum_of_numbers += int(number_count)
                 continue
         print("The sum of all the numbers", sum_of_numbers)
+        print("-" * 40)
 
         graph = "***** *** ****** * **"
-        for value in graph.split():
+
+        dictionary = dict()
+        max_len_value = len(max(graph.split(), key=len))
+
+        for word_length in graph.split():
+            if word_length not in dictionary:
+                dictionary[len(word_length)] = word_length
+
+        for key, value in dictionary.items():
             if value.count("*"):
                 graph_for_number += 1
-                print(graph_for_number, value, len(value), sep="|")
-                continue
-    elif text_selection == "3":
+                print(str(graph_for_number).rjust(3),
+                      "|", len(value) * "*",
+                      "|".rjust(max_len_value + 1 - len(value)), len(value))
+
+    elif text_selection == 3:
         text_selection = TEXTS[2]
         print("There are", len(text_selection.split()), "words in the selected text.")
         for words_and_number in text_selection.split():
@@ -144,13 +165,23 @@ if dict(user_password).get(username) == password:
                 sum_of_numbers += int(number_count)
                 continue
         print("The sum of all the numbers", sum_of_numbers)
+        print("-" * 40)
 
         graph = "***** *** ****** * **"
-        for value in graph.split():
+
+        dictionary = dict()
+        max_len_value = len(max(graph.split(), key=len))
+
+        for word_length in graph.split():
+            if word_length not in dictionary:
+                dictionary[len(word_length)] = word_length
+
+        for key, value in dictionary.items():
             if value.count("*"):
                 graph_for_number += 1
-                print(graph_for_number, value, len(value), sep="|")
-                continue
+                print(str(graph_for_number).rjust(3),
+                      "|", len(value) * "*",
+                      "|".rjust(max_len_value + 1 - len(value)), len(value))
     else:
         print("-" * 40)
         print("wrongly entered value, terminating the program..")

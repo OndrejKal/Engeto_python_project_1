@@ -45,147 +45,148 @@ upper, lower, number, title, sum_of_numbers, graph_for_number = 0, 0, 0, 0, 0, 0
 username = input("username:")
 password = input("password:")
 print("-" * 40)
-if dict(user_password).get(username) == password:
-    print("Welcome to the app,", username)
-    print("We have 3 texts to be analyzed.")
-    print("-" * 40)
-    text_selection = int(input("Enter a number btw. 1 and 3 to select: "))
-    print("-" * 40)
-    if text_selection == 1:
-        text_selection = TEXTS[0]
-        print("There are", len(text_selection.split()), "words in the selected text.")
-        for words_and_number in text_selection.split():
-            if words_and_number.istitle():
-                title += 1
-                continue
-            elif words_and_number.isupper():
-                upper += 1
-                continue
-            elif words_and_number.islower():
-                lower += 1
-                continue
-            elif words_and_number.isdigit():
-                number += 1
-                continue
-
-        print("There are", title, "titlecase words.")
-        print("There are", upper, "uppercase words.")
-        print("There are", lower, "lowercase words.")
-        print("There are", number, "numeric strings.")
-        for number_count in text_selection.split():
-            if number_count.isdigit():
-                sum_of_numbers += int(number_count)
-                continue
-        print("The sum of all the numbers", sum_of_numbers)
+if username in usernames:
+    if dict(user_password).get(username) == password:
+        print("Welcome to the app,", username)
+        print("We have 3 texts to be analyzed.")
         print("-" * 40)
-
-        graph = "***** *** ****** * **"
-
-        dictionary = dict()
-        max_len_value = len(max(graph.split(), key=len))
-
-        for word_length in graph.split():
-            if word_length not in dictionary:
-                dictionary[len(word_length)] = word_length
-
-        for key, value in dictionary.items():
-            if value.count("*"):
-                graph_for_number += 1
-                print(str(graph_for_number).rjust(3),
-                      "|", len(value) * "*",
-                      "|".rjust(max_len_value + 1 - len(value)), len(value))
-
-    elif text_selection == 2:
-        text_selection = TEXTS[1]
-        print("There are", len(text_selection.split()), "words in the selected text.")
-        for words_and_number in text_selection.split():
-            if words_and_number.istitle():
-                title += 1
-                continue
-            elif words_and_number.isupper():
-                upper += 1
-                continue
-            elif words_and_number.islower():
-                lower += 1
-                continue
-            elif words_and_number.isdigit():
-                number += 1
-                continue
-
-        print("There are", title, "titlecase words.")
-        print("There are", upper, "uppercase words.")
-        print("There are", lower, "lowercase words.")
-        print("There are", number, "numeric strings.")
-        for number_count in text_selection.split():
-            if number_count.isdigit():
-                sum_of_numbers += int(number_count)
-                continue
-        print("The sum of all the numbers", sum_of_numbers)
+        text_selection = int(input("Enter a number btw. 1 and 3 to select: "))
         print("-" * 40)
+        if text_selection == 1:
+            text_selection = TEXTS[text_selection - 1]
+            print("There are", len(text_selection.split()), "words in the selected text.")
+            for words_and_number in text_selection.split():
+                if words_and_number.istitle():
+                    title += 1
+                    continue
+                elif words_and_number.isupper():
+                    upper += 1
+                    continue
+                elif words_and_number.islower():
+                    lower += 1
+                    continue
+                elif words_and_number.isdigit():
+                    number += 1
+                    continue
 
-        graph = "***** *** ****** * **"
+            print("There are", title, "titlecase words.")
+            print("There are", upper, "uppercase words.")
+            print("There are", lower, "lowercase words.")
+            print("There are", number, "numeric strings.")
+            for number_count in text_selection.split():
+                if number_count.isdigit():
+                    sum_of_numbers += int(number_count)
+                    continue
+            print("The sum of all the numbers", sum_of_numbers)
+            print("-" * 40)
 
-        dictionary = dict()
-        max_len_value = len(max(graph.split(), key=len))
+            graph = "***** *** ****** * **"
 
-        for word_length in graph.split():
-            if word_length not in dictionary:
-                dictionary[len(word_length)] = word_length
+            dictionary = dict()
+            max_len_value = len(max(graph.split(), key=len))
 
-        for key, value in dictionary.items():
-            if value.count("*"):
-                graph_for_number += 1
-                print(str(graph_for_number).rjust(3),
-                      "|", len(value) * "*",
-                      "|".rjust(max_len_value + 1 - len(value)), len(value))
+            for word_length in graph.split():
+                if word_length not in dictionary:
+                    dictionary[len(word_length)] = word_length
 
-    elif text_selection == 3:
-        text_selection = TEXTS[2]
-        print("There are", len(text_selection.split()), "words in the selected text.")
-        for words_and_number in text_selection.split():
-            if words_and_number.istitle():
-                title += 1
-                continue
-            elif words_and_number.isupper():
-                upper += 1
-                continue
-            elif words_and_number.islower():
-                lower += 1
-                continue
-            elif words_and_number.isdigit():
-                number += 1
-                continue
+            for key, value in dictionary.items():
+                if value.count("*"):
+                    graph_for_number += 1
+                    print(str(graph_for_number).rjust(3),
+                          "|", len(value) * "*",
+                          "|".rjust(max_len_value + 1 - len(value)), len(value))
 
-        print("There are", title, "titlecase words.")
-        print("There are", upper, "uppercase words.")
-        print("There are", lower, "lowercase words.")
-        print("There are", number, "numeric strings.")
-        for number_count in text_selection.split():
-            if number_count.isdigit():
-                sum_of_numbers += int(number_count)
-                continue
-        print("The sum of all the numbers", sum_of_numbers)
-        print("-" * 40)
+        elif text_selection == 2:
+            text_selection = TEXTS[text_selection - 1]
+            print("There are", len(text_selection.split()), "words in the selected text.")
+            for words_and_number in text_selection.split():
+                if words_and_number.istitle():
+                    title += 1
+                    continue
+                elif words_and_number.isupper():
+                    upper += 1
+                    continue
+                elif words_and_number.islower():
+                    lower += 1
+                    continue
+                elif words_and_number.isdigit():
+                    number += 1
+                    continue
 
-        graph = "***** *** ****** * **"
+            print("There are", title, "titlecase words.")
+            print("There are", upper, "uppercase words.")
+            print("There are", lower, "lowercase words.")
+            print("There are", number, "numeric strings.")
+            for number_count in text_selection.split():
+                if number_count.isdigit():
+                    sum_of_numbers += int(number_count)
+                    continue
+            print("The sum of all the numbers", sum_of_numbers)
+            print("-" * 40)
 
-        dictionary = dict()
-        max_len_value = len(max(graph.split(), key=len))
+            graph = "***** *** ****** * **"
 
-        for word_length in graph.split():
-            if word_length not in dictionary:
-                dictionary[len(word_length)] = word_length
+            dictionary = dict()
+            max_len_value = len(max(graph.split(), key=len))
 
-        for key, value in dictionary.items():
-            if value.count("*"):
-                graph_for_number += 1
-                print(str(graph_for_number).rjust(3),
-                      "|", len(value) * "*",
-                      "|".rjust(max_len_value + 1 - len(value)), len(value))
+            for word_length in graph.split():
+                if word_length not in dictionary:
+                    dictionary[len(word_length)] = word_length
+
+            for key, value in dictionary.items():
+                if value.count("*"):
+                    graph_for_number += 1
+                    print(str(graph_for_number).rjust(3),
+                          "|", len(value) * "*",
+                          "|".rjust(max_len_value + 1 - len(value)), len(value))
+
+        elif text_selection == 3:
+            text_selection = TEXTS[text_selection - 1]
+            print("There are", len(text_selection.split()), "words in the selected text.")
+            for words_and_number in text_selection.split():
+                if words_and_number.istitle():
+                    title += 1
+                    continue
+                elif words_and_number.isupper():
+                    upper += 1
+                    continue
+                elif words_and_number.islower():
+                    lower += 1
+                    continue
+                elif words_and_number.isdigit():
+                    number += 1
+                    continue
+
+            print("There are", title, "titlecase words.")
+            print("There are", upper, "uppercase words.")
+            print("There are", lower, "lowercase words.")
+            print("There are", number, "numeric strings.")
+            for number_count in text_selection.split():
+                if number_count.isdigit():
+                    sum_of_numbers += int(number_count)
+                    continue
+            print("The sum of all the numbers", sum_of_numbers)
+            print("-" * 40)
+
+            graph = "***** *** ****** * **"
+
+            dictionary = dict()
+            max_len_value = len(max(graph.split(), key=len))
+
+            for word_length in graph.split():
+                if word_length not in dictionary:
+                    dictionary[len(word_length)] = word_length
+
+            for key, value in dictionary.items():
+                if value.count("*"):
+                    graph_for_number += 1
+                    print(str(graph_for_number).rjust(3),
+                          "|", len(value) * "*",
+                          "|".rjust(max_len_value + 1 - len(value)), len(value))
+        else:
+            print("-" * 40)
+            print("wrongly entered value, terminating the program..")
     else:
-        print("-" * 40)
-        print("wrongly entered value, terminating the program..")
-
-
+        print("unregistered user, terminating the program..")
 else:
-    print("unregistered user, terminating the program..")
+    print("your username is incorrect, terminating the program..")
